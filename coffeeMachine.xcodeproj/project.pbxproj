@@ -13,6 +13,7 @@
 		47614AC6254835FE005462E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47614AC4254835FE005462E7 /* Main.storyboard */; };
 		47614AC825483600005462E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47614AC725483600005462E7 /* Assets.xcassets */; };
 		47614ACB25483600005462E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47614AC925483600005462E7 /* LaunchScreen.storyboard */; };
+		47614AD4254837E1005462E7 /* cofeeMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47614AD3254837E1005462E7 /* cofeeMachine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		47614AC725483600005462E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47614ACA25483600005462E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47614ACC25483600005462E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47614AD3254837E1005462E7 /* cofeeMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cofeeMachine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				47614AC725483600005462E7 /* Assets.xcassets */,
 				47614AC925483600005462E7 /* LaunchScreen.storyboard */,
 				47614ACC25483600005462E7 /* Info.plist */,
+				47614AD3254837E1005462E7 /* cofeeMachine.swift */,
 			);
 			path = coffeeMachine;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47614AD4254837E1005462E7 /* cofeeMachine.swift in Sources */,
 				47614AC3254835FE005462E7 /* ViewController.swift in Sources */,
 				47614ABF254835FE005462E7 /* AppDelegate.swift in Sources */,
 				47614AC1254835FE005462E7 /* SceneDelegate.swift in Sources */,
