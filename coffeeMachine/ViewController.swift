@@ -43,6 +43,7 @@ class ViewController: UIViewController {
   
     
     @IBAction func drinkChosen(_ sender: UIButton) {
+        display.text = coffeeBrain.makeDrink(drink: .cappucino)
     }
     
 }

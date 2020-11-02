@@ -189,6 +189,9 @@ struct CoffeeMachine {
     func maxCapacityReturn(stockItem: StockItems) -> Double {
         return stockItem.maxCapacity
     }
+    func makeDrink(drink: drinks) -> String {
+        guard moneyInVendor >= drink.moneyNeeded else {return "Not enought money. You need \(Int(drink.moneyNeeded - moneyInVendor)) more. "}
     
-
+return ""
     }
+}
