@@ -115,6 +115,19 @@ struct CoffeeMachine {
             case .irishWhiskey: return 50
             }
         }
+        
+        var moneyNeeded : Double {
+            switch self {
+            case .latte: return 5
+            case .cappucino: return 10
+            case .espresso: return 15
+            case .blackTea: return 20
+            case .greenTea: return 40
+            case .flatWhite: return 60
+            case .hotChocolade: return 80
+            case .irishWhiskey: return 200
+            }
+        }
     }
     
     enum StockItems {
@@ -164,16 +177,18 @@ struct CoffeeMachine {
     
     mutating func makeSomeCash() -> String {
         money += 100
-        return "WOW! You earned \(money)$"
+        return "WOW! You now have \(money)$"
     }
     
-    mutating func putMoney(amount: Double) -> String {
+    mutating func putMoney(amount: Double)  {
         money -= amount
         moneyInVendor += amount
-        return "5$ in"
+        
     }
     
     func maxCapacityReturn(stockItem: StockItems) -> Double {
         return stockItem.maxCapacity
     }
+    
+
     }
