@@ -37,18 +37,19 @@ class ViewController: UIViewController {
     let stockTags : [Int:CoffeeMachine.StockItems] = [1 : .milk, 2 : .coffee, 3 : .water]
     let drinksTsg : [Int : CoffeeMachine.drinks] = [1 : .latte, 2 : .cappucino, 3 : .espresso, 4 : .blackTea, 5 : .greenTea, 6 : .flatWhite, 7 : .hotChocolade, 8 : .irishWhiskey]
     var cashAmount : Double = 0.0
+    
     @IBAction func buttonPressed(_ sender: UIButton) {
         coffeeBrain.putMoney(amount: cashAmount)
         display.text = "You're balance : \(Int(coffeeBrain.moneyInVendor))$"
         stepper.value = 0
         cashAmount = 0
-        moneyHas.text = "Money: \(coffeeBrain.money)$"
+        moneyHas.text = "Money: \(Int(coffeeBrain.money))$"
     }
     
     @IBAction func earnCash(_ sender: UIButton) {
         display.text = coffeeBrain.makeSomeCash()
         stepper.value = 0
-        moneyHas.text = "Money: \(coffeeBrain.money)$"
+        moneyHas.text = "Money: \(Int(coffeeBrain.money))$"
         stepper.maximumValue = coffeeBrain.money
     }
     
@@ -71,7 +72,7 @@ class ViewController: UIViewController {
     
     @IBAction func drinkChosen(_ sender: UIButton) {
         display.text = coffeeBrain.makeDrink(drink: drinksTsg[sender.tag] ?? .latte)
-        moneyHas.text = "Money: \(coffeeBrain.money)$"
+       
         
     }
     
