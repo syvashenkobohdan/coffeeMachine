@@ -189,9 +189,29 @@ struct CoffeeMachine {
     func maxCapacityReturn(stockItem: StockItems) -> Double {
         return stockItem.maxCapacity
     }
-    func makeDrink(drink: drinks) -> String {
-        guard moneyInVendor >= drink.moneyNeeded else {return "Not enought money. You need \(Int(drink.moneyNeeded - moneyInVendor)) more. "}
     
-return ""
+    mutating func makeDrink(drink: drinks) -> String {
+        guard moneyInVendor >= drink.moneyNeeded else {return "Not enought money. You need \(Int(drink.moneyNeeded - moneyInVendor))$ more. "}
+        guard stock[.water] ?? 0 >= drink.waterNeeded else {return "Not enought \(StockItems.water.name). You need to refill it"}
+        guard stock[.milk] ?? 0 >= drink.milkNeeded else {return "Not enought \(StockItems.milk.name). You need to refill it"}
+        guard stock[.coffee] ?? 0 >= drink.coffeeNeeded else {return "Not enought \(StockItems.coffee.name). You need to refill it"}
+        guard stock[.chocolade] ?? 0 >= drink.chocoladeNeeded else {return "Not enought \(StockItems.chocolade.name). You need to refill it "}
+        guard stock[.greenTea] ?? 0 >= drink.greenTeaNeeded else {return "Not enought \(StockItems.greenTea.name). You need to refill it"}
+        guard stock[.blackTea] ?? 0 >= drink.blackTeaNeeded else {return "Not enought \(StockItems.blackTea.name). You need to refill it"}
+        guard stock[.whiskey] ?? 0 >= drink.whiskeyNeeded else {return "Not enought \(StockItems.whiskey.name). You need to refill it"}
+        
+        moneyInVendor -= drink.moneyNeeded
+        stock[.water]! -= drink.waterNeeded
+        stock[.milk]! -= drink.milkNeeded
+        stock[.coffee]! -= drink.coffeeNeeded
+        stock[.chocolade]! -= drink.chocoladeNeeded
+        stock[.greenTea]! -= drink.greenTeaNeeded
+        stock[.blackTea]! -= drink.blackTeaNeeded
+        stock[.whiskey]! -= drink.whiskeyNeeded
+        return "You're \(drink.name) is being prepared"
+    }
+    
+    func returnName(drink: drinks) -> String {
+        return drink.name
     }
 }
