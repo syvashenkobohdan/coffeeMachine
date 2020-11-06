@@ -9,10 +9,10 @@ import Foundation
  
 struct CoffeeMachine {
     
-    enum drinks {
+    enum Drink {
         case latte, cappucino, espresso, blackTea, greenTea, flatWhite, hotChocolade, irishWhiskey
         
-        var name : String {
+        var name: String {
             switch self {
             case .latte: return "Latte"
             case .cappucino: return "Cappucino"
@@ -25,7 +25,7 @@ struct CoffeeMachine {
             }
         }
         
-        var coffeeNeeded : Double {
+        var coffeeNeeded: Double {
             switch self {
             case .latte: return 30
             case .cappucino: return 50
@@ -38,7 +38,7 @@ struct CoffeeMachine {
             }
         }
         
-        var waterNeeded : Double {
+        var waterNeeded: Double {
             switch self {
             case .latte: return 30
             case .cappucino: return 50
@@ -51,7 +51,7 @@ struct CoffeeMachine {
             }
         }
         
-        var milkNeeded : Double {
+        var milkNeeded: Double {
             switch self {
             case .latte: return 50
             case .cappucino: return 40
@@ -64,7 +64,7 @@ struct CoffeeMachine {
             }
         }
         
-        var greenTeaNeeded : Double {
+        var greenTeaNeeded: Double {
             switch self {
             case .latte: return 0
             case .cappucino: return 0
@@ -77,7 +77,7 @@ struct CoffeeMachine {
             }
         }
         
-        var blackTeaNeeded : Double {
+        var blackTeaNeeded: Double {
             switch self {
             case .latte: return 0
             case .cappucino: return 0
@@ -90,7 +90,7 @@ struct CoffeeMachine {
             }
         }
         
-        var chocoladeNeeded : Double {
+        var chocoladeNeeded: Double {
             switch self {
             case .latte: return 0
             case .cappucino: return 0
@@ -103,7 +103,7 @@ struct CoffeeMachine {
             }
         }
         
-        var whiskeyNeeded : Double {
+        var whiskeyNeeded: Double {
             switch self {
             case .latte: return 0
             case .cappucino: return 0
@@ -116,7 +116,7 @@ struct CoffeeMachine {
             }
         }
         
-        var moneyNeeded : Double {
+        var moneyNeeded: Double {
             switch self {
             case .latte: return 5
             case .cappucino: return 10
@@ -129,7 +129,7 @@ struct CoffeeMachine {
             }
         }
         
-        var timeNeeded : Int {
+        var timeNeeded: Int {
             switch self {
             case .latte: return 10
             case .cappucino: return 15
@@ -143,10 +143,10 @@ struct CoffeeMachine {
         }
     }
     
-    enum StockItems {
+    enum StockItem {
         case water, milk, coffee, blackTea, greenTea, chocolade, whiskey
         
-        var name : String {
+        var name: String {
             switch self {
             case .water: return "Water"
             case .milk: return "Milk"
@@ -158,7 +158,7 @@ struct CoffeeMachine {
             }
         }
         
-        var maxCapacity : Double {
+        var maxCapacity: Double {
             switch self {
             case .water: return 10000
             case .milk: return 5000
@@ -171,7 +171,7 @@ struct CoffeeMachine {
         }
     }
     
-    var stock : [StockItems : Double]
+    var stock : [StockItem : Double]
     var money : Double
     var moneyInVendor : Double
     
@@ -183,7 +183,7 @@ struct CoffeeMachine {
         moneyInVendor = 0
     }
     
-    mutating func reStock(stockItem: StockItems) -> String {
+    mutating func reStock(stockItem: StockItem) -> String {
         stock[stockItem] = stockItem.maxCapacity
         return "\(stockItem.name) has been refilled"
     }
@@ -199,19 +199,19 @@ struct CoffeeMachine {
         
     }
     
-    func maxCapacityReturn(stockItem: StockItems) -> Double {
+    func maxCapacityReturn(stockItem: StockItem) -> Double {
         return stockItem.maxCapacity
     }
     
-    mutating func makeDrink(drink: drinks) -> String {
+    mutating func makeDrink(drink: Drink) -> String {
         guard moneyInVendor >= drink.moneyNeeded else {return "Not enought money. You need \(Int(drink.moneyNeeded - moneyInVendor))$ more. "}
-        guard stock[.water] ?? 0 >= drink.waterNeeded else {return "Not enought \(StockItems.water.name). You need to refill it"}
-        guard stock[.milk] ?? 0 >= drink.milkNeeded else {return "Not enought \(StockItems.milk.name). You need to refill it"}
-        guard stock[.coffee] ?? 0 >= drink.coffeeNeeded else {return "Not enought \(StockItems.coffee.name). You need to refill it"}
-        guard stock[.chocolade] ?? 0 >= drink.chocoladeNeeded else {return "Not enought \(StockItems.chocolade.name). You need to refill it "}
-        guard stock[.greenTea] ?? 0 >= drink.greenTeaNeeded else {return "Not enought \(StockItems.greenTea.name). You need to refill it"}
-        guard stock[.blackTea] ?? 0 >= drink.blackTeaNeeded else {return "Not enought \(StockItems.blackTea.name). You need to refill it"}
-        guard stock[.whiskey] ?? 0 >= drink.whiskeyNeeded else {return "Not enought \(StockItems.whiskey.name). You need to refill it"}
+        guard stock[.water] ?? 0 >= drink.waterNeeded else {return "Not enought \(StockItem.water.name). You need to refill it"}
+        guard stock[.milk] ?? 0 >= drink.milkNeeded else {return "Not enought \(StockItem.milk.name). You need to refill it"}
+        guard stock[.coffee] ?? 0 >= drink.coffeeNeeded else {return "Not enought \(StockItem.coffee.name). You need to refill it"}
+        guard stock[.chocolade] ?? 0 >= drink.chocoladeNeeded else {return "Not enought \(StockItem.chocolade.name). You need to refill it "}
+        guard stock[.greenTea] ?? 0 >= drink.greenTeaNeeded else {return "Not enought \(StockItem.greenTea.name). You need to refill it"}
+        guard stock[.blackTea] ?? 0 >= drink.blackTeaNeeded else {return "Not enought \(StockItem.blackTea.name). You need to refill it"}
+        guard stock[.whiskey] ?? 0 >= drink.whiskeyNeeded else {return "Not enought \(StockItem.whiskey.name). You need to refill it"}
         
         moneyInVendor -= drink.moneyNeeded
         stock[.water]! -= drink.waterNeeded
@@ -224,11 +224,11 @@ struct CoffeeMachine {
         return "You're \(drink.name) is being prepared"
     }
     
-    func returnTime(drink: drinks) -> Int {
+    func returnTime(drink: Drink) -> Int {
         return drink.timeNeeded
     }
     
-    func returnName(drink: drinks) -> String {
+    func returnName(drink: Drink) -> String {
         return drink.name
     }
     

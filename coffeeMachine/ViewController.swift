@@ -37,8 +37,8 @@ class ViewController: UIViewController {
     var timeNeeded = 0
     var timer = Timer()
     var coffeeBrain = CoffeeMachine()
-    let stockTags : [Int : CoffeeMachine.StockItems] = [1 : .milk, 2 : .coffee, 3 : .water]
-    let drinksTsg : [Int : CoffeeMachine.drinks] = [1 : .latte, 2 : .cappucino, 3 : .espresso, 4 : .blackTea, 5 : .greenTea, 6 : .flatWhite, 7 : .hotChocolade, 8 : .irishWhiskey]
+    let stockTags : [Int : CoffeeMachine.StockItem] = [1 : .milk, 2 : .coffee, 3 : .water]
+    let drinksTsg : [Int : CoffeeMachine.Drink] = [1 : .latte, 2 : .cappucino, 3 : .espresso, 4 : .blackTea, 5 : .greenTea, 6 : .flatWhite, 7 : .hotChocolade, 8 : .irishWhiskey]
     var cashAmount : Double = 0.0
     
     @IBAction func buttonPressed(_ sender: UIButton) {
