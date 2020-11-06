@@ -77,6 +77,7 @@ class ViewController: UIViewController {
         timer.invalidate()
         display.text = coffeeBrain.makeDrink(drink: drinksTsg[sender.tag] ?? .latte)
         timeNeeded = coffeeBrain.returnTime(drink: drinksTsg[sender.tag] ?? .latte)
+        guard ((display.text!.contains("prepared"))) else {return}
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
         bar.isHidden = false
        
