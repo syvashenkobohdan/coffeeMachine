@@ -129,16 +129,16 @@ struct CoffeeMachine {
             }
         }
         
-        var timeNeeded : Float {
+        var timeNeeded : Int {
             switch self {
-            case .latte: return 10.0
-            case .cappucino: return 15.0
-            case .espresso: return 20.0
-            case .blackTea: return 5.0
-            case .greenTea: return 5.0
-            case .flatWhite: return 20.0
-            case .hotChocolade: return 12.0
-            case .irishWhiskey: return 10.0
+            case .latte: return 10
+            case .cappucino: return 15
+            case .espresso: return 20
+            case .blackTea: return 5
+            case .greenTea: return 5
+            case .flatWhite: return 20
+            case .hotChocolade: return 12
+            case .irishWhiskey: return 10
             }
         }
     }
@@ -224,7 +224,7 @@ struct CoffeeMachine {
         return "You're \(drink.name) is being prepared"
     }
     
-    func returnTime(drink: drinks) -> Float {
+    func returnTime(drink: drinks) -> Int {
         return drink.timeNeeded
     }
     

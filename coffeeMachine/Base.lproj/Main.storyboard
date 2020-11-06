@@ -240,7 +240,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zI2-ne-Lsq">
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="zI2-ne-Lsq">
                                 <rect key="frame" x="674" y="829.5" width="170" height="1.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="progressTintColor" systemColor="systemGreenColor"/>
@@ -251,6 +251,7 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
+                        <outlet property="bar" destination="zI2-ne-Lsq" id="k9J-1e-4Ir"/>
                         <outlet property="coffee" destination="rdb-Zx-Rua" id="BgA-4x-TiF"/>
                         <outlet property="display" destination="5Ze-Yc-2lL" id="k7G-5Y-zJp"/>
                         <outlet property="eighthDrinkButton" destination="ko7-AL-xVH" id="X4V-bI-drz"/>

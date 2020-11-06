@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var ninthDrinkButton: UIButton!
     @IBOutlet weak var moneyHas: UILabel!
     
+    @IBOutlet weak var bar: UIProgressView!
     @IBOutlet weak var water: UIButton!
     @IBOutlet weak var coffee: UIButton!
     @IBOutlet weak var milk: UIButton!
@@ -33,6 +34,7 @@ class ViewController: UIViewController {
         ninthDrinkButton.setTitle(coffeeBrain.returnName(drink: .blackTea), for: .normal)
     }
     var counter = 0
+    var timeNeeded = 0
     var timer = Timer()
     var coffeeBrain = CoffeeMachine()
     let stockTags : [Int : CoffeeMachine.StockItems] = [1 : .milk, 2 : .coffee, 3 : .water]
@@ -72,21 +74,24 @@ class ViewController: UIViewController {
   
     
     @IBAction func drinkChosen(_ sender: UIButton)  {
+        timer.invalidate()
         display.text = coffeeBrain.makeDrink(drink: drinksTsg[sender.tag] ?? .latte)
-        var timeNeeded = coffeeBrain.returnTime(drink: drinksTsg[sender.tag] ?? .latte)
+        timeNeeded = coffeeBrain.returnTime(drink: drinksTsg[sender.tag] ?? .latte)
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+        bar.isHidden = false
        
     }
     
     @objc func timerAction() {
-        if counter < {
+        if counter < timeNeeded{
             counter += 1
             bar.progress = Float(counter) / Float(timeNeeded)
             
         } else {
             timer.invalidate()
-            
-            
+            bar.progress = 0
+            bar.isHidden = true
+            display.text = "Your Drink is hot and ready!"
             counter = 0
             
         }
