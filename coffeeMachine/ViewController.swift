@@ -32,9 +32,10 @@ class ViewController: UIViewController {
         eighthDrinkButton.setTitle(coffeeBrain.returnName(drink: .irishWhiskey), for: .normal)
         ninthDrinkButton.setTitle(coffeeBrain.returnName(drink: .blackTea), for: .normal)
     }
-    
+    var counter = 0
+    var timer = Timer()
     var coffeeBrain = CoffeeMachine()
-    let stockTags : [Int:CoffeeMachine.StockItems] = [1 : .milk, 2 : .coffee, 3 : .water]
+    let stockTags : [Int : CoffeeMachine.StockItems] = [1 : .milk, 2 : .coffee, 3 : .water]
     let drinksTsg : [Int : CoffeeMachine.drinks] = [1 : .latte, 2 : .cappucino, 3 : .espresso, 4 : .blackTea, 5 : .greenTea, 6 : .flatWhite, 7 : .hotChocolade, 8 : .irishWhiskey]
     var cashAmount : Double = 0.0
     
@@ -70,10 +71,25 @@ class ViewController: UIViewController {
     
   
     
-    @IBAction func drinkChosen(_ sender: UIButton) {
+    @IBAction func drinkChosen(_ sender: UIButton)  {
         display.text = coffeeBrain.makeDrink(drink: drinksTsg[sender.tag] ?? .latte)
+        var timeNeeded = coffeeBrain.returnTime(drink: drinksTsg[sender.tag] ?? .latte)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
        
-        
     }
+    
+    @objc func timerAction() {
+        if counter < {
+            counter += 1
+            bar.progress = Float(counter) / Float(timeNeeded)
+            
+        } else {
+            timer.invalidate()
+            
+            
+            counter = 0
+            
+        }
+        }
     
 }

@@ -128,6 +128,19 @@ struct CoffeeMachine {
             case .irishWhiskey: return 200
             }
         }
+        
+        var timeNeeded : Float {
+            switch self {
+            case .latte: return 10.0
+            case .cappucino: return 15.0
+            case .espresso: return 20.0
+            case .blackTea: return 5.0
+            case .greenTea: return 5.0
+            case .flatWhite: return 20.0
+            case .hotChocolade: return 12.0
+            case .irishWhiskey: return 10.0
+            }
+        }
     }
     
     enum StockItems {
@@ -211,7 +224,13 @@ struct CoffeeMachine {
         return "You're \(drink.name) is being prepared"
     }
     
+    func returnTime(drink: drinks) -> Float {
+        return drink.timeNeeded
+    }
+    
     func returnName(drink: drinks) -> String {
         return drink.name
     }
+    
+    
 }
